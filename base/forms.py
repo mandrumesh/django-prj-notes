@@ -8,8 +8,8 @@ class NoteForm(forms.ModelForm):
         # fields = '__all__'
         fields = ['name','category','description']
         widgets = {
-            'name': forms.TextInput(attrs= {'class': 'form-control'}),
-            'category': forms.Select(choices=NoteCategory.objects.all, attrs={'class':'form-select'}),
+            'name': forms.TextInput(attrs= {'class': 'form-control mb-2'}),
+            'category': forms.Select(choices=NoteCategory.objects.all, attrs={'class':'form-select mb-2'}),
             'description': forms.Textarea(attrs= {'class': 'form-control'}),
         }
 
