@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 class NoteCategory(models.Model):
     name = models.CharField(max_length=300)
 
+    def __str__(self):
+        return self.name
+
 class Note(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField()
     category = models.ForeignKey(NoteCategory,on_delete=models.SET_NULL,null=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)

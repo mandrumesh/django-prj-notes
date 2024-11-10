@@ -13,27 +13,66 @@
 </head>
 
 <body>
-    <h1>Home page</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in notes %}
-                <tr>
-                    <th scope="row">{{i.id}}</th>
-                    <td>{{i.name}}</td>
-                    <td>{{i.description}}</td>
-                    <td>{{i.category.name}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container mt-5">
+        <h2>Notes</h2>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Notes</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Note Categories</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                tabindex="0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in notes %}
+                        <tr>
+                            <td scope="row">{{i.id}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.category.name}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'notes-form' %}"><button class="btn btn-primary">Add Note</button></a>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in note_categories %}
+                        <tr>
+                            <td scope="row">{{i.id}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.category.name}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'notes-category-form' %}"><button class="btn btn-primary">Add Note Category </button></a>
+            </div>
+        </div>
+
+
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
