@@ -17,6 +17,14 @@ class NoteCategoryForm(forms.ModelForm):
     class Meta:
         model = NoteCategory
         fields = ['name']
-        widgets = {
+        widget = {
             'name': forms.TextInput(attrs= {'class': 'form-control'})
         }
+
+class SearchNoteForm(forms.Form):
+    query = forms.CharField(
+        max_length=300, 
+        required=False,
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search for Notes...'})
+    )
+        

@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
 from .models import Note, NoteCategory
-from .forms import NoteForm, NoteCategoryForm
+from .forms import NoteForm, NoteCategoryForm, SearchNoteForm
 
 # Create your views here.
 def home(request):
     notes_obj = Note.objects.all()
     note_category_objs = NoteCategory.objects.all()
-    data = {'notes':notes_obj, 'note_categories': note_category_objs}
+    search_form = SearchNoteForm(request.GET)
+
+    if search_form.is_valid():
+        query = search_form.cleaned_data.get('query')
+        if query:
+            notes_obj = notes_obj.filter(name__icontains=query)
+    data = {'notes':notes_obj, 'note_categories': note_category_objs, 'search_form': search_form}
     return render(request, 'index.html',context=data)
 
 def notes_form(request): 
@@ -59,14 +65,10 @@ def edit_note_category(request, pk):
 
 def delete_note(request, pk):
     note_obj = Note.objects.get(id=pk)
-    if request.method == 'POST':
-        note_obj.delete()
-        return redirect('home')
+    note_obj.delete()
     return redirect('home')
 
 def delete_note_category(request, pk):
     note_category_obj = NoteCategory.objects.get(id=pk)
-    if request.method == 'POST':
-        note_category_obj.delete()
-        return redirect('/#nav-note-category')
-    return redirect('')
+    note_category_obj.delete()
+    return redirect('/#nav-note-category')
