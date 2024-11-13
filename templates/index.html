@@ -32,10 +32,8 @@
             <div class="tab-pane fade show active" id="nav-note" role="tabpanel" aria-labelledby="nav-home-tab"
                 tabindex="0">
                 <form method="get">
-                    {% csrf_token %}
                     <div class="input-group my-3">
-
-                        {{ search_form }}
+                        <input name="query" type="text">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>

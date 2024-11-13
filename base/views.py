@@ -6,13 +6,10 @@ from .forms import NoteForm, NoteCategoryForm, SearchNoteForm
 def home(request):
     notes_obj = Note.objects.all()
     note_category_objs = NoteCategory.objects.all()
-    search_form = SearchNoteForm(request.GET)
-
-    if search_form.is_valid():
-        query = search_form.cleaned_data.get('query')
-        if query:
-            notes_obj = notes_obj.filter(name__icontains=query)
-    data = {'notes':notes_obj, 'note_categories': note_category_objs, 'search_form': search_form}
+    query = request.GET.get('query')
+    if query:
+        notes_obj = notes_obj.filter(name__icontains=query)
+    data = {'notes':notes_obj, 'note_categories': note_category_objs}
     return render(request, 'index.html',context=data)
 
 def notes_form(request): 
