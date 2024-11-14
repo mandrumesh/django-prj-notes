@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import home
-from base.views import notes_form, notes_category_form, edit_note, edit_note_category, delete_note, delete_note_category
+from base.views import home, notes_form, notes_category_form, edit_note, edit_note_category, delete_note, delete_note_category, register, user_login, user_logout, delete_note_all
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,9 @@ urlpatterns = [
     path('edit_note/<int:pk>/', edit_note, name='edit-note'), #pass id value
     path('edit_note_category/<int:pk>/', edit_note_category, name='edit-note-category'),
     path('delete_note/<int:pk>/', delete_note, name='delete-note'),
+    path('delete_note_all/', delete_note_all, name='delete-note-all'),
     path('delete_note_category/<int:pk>/', delete_note_category, name='delete-note-category'),
+    path('register/', register, name='register'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout')
 ]

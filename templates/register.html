@@ -40,22 +40,24 @@
         </div>
     </nav>
     <div class="container my-5">
-        <h2 class="mb-3">Notes</h2>
-        <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Add Note</li>
-            </ol>
-          </nav>
-        <form method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                {% load static %}
+                <img src="{% static 'img/note.jpg' %}" alt="Note">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-3">Create New Account?</h2>
+                <form method="POST">
 
-            {% csrf_token %}
-            
-            {{ form }}
+                    {% csrf_token %}
+                    {{ form }}
 
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
-        
-        </form>
+                    <button type="submit" class="btn btn-primary my-4">Submit</button>
+
+                </form>
+                <a href="{% url 'login' %}">Already have an account?</a>
+            </div>
+        </div>
     </div>
 
 </body>
