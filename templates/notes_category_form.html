@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Notes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -37,24 +37,24 @@
                     </li>
                 </ul>
             </div>
-            <a class="d-flex" href="{% url 'logout' %}"><button class="btn btn-primary">Log Out</button></a>
+            <a class="d-flex link-light" href="{% url 'logout' %}">log out</a>
         </div>
     </nav>
     <div class="container my-5">
-        <h2 class="mb-3">Notes</h2>
         <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Add Note Category</li>
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Note Category</li>
             </ol>
-          </nav>
+        </nav>
+        <h4 class="mb-2">Add Note Category</h4>
         <form method="POST">
 
             {% csrf_token %}
 
             {{ form }}
 
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
 
         </form>
     </div>

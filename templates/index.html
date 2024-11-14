@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,12 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Notes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -40,29 +43,34 @@
                     </li>
                 </ul>
             </div>
-            <a class="d-flex" href="{% url 'logout' %}"><button class="btn btn-primary">Log Out</button></a>
+            <a class="d-flex link-light" href="{% url 'logout' %}">log out</a>
         </div>
     </nav>
-    <div class="container my-3">
-        <h2 class="mb-3">Notes</h2>
+    <div class="img-banner">
+        <img src="{% static 'img/note_banner.jpg' %}">
+        <div class="img-banner-content">
+            <h1>If You Aren't <span>Taking Notes</span>, You Aren't <span>Learning</span></h1>
+        </div>
+    </div>
+    <div class="container mb-5 mt-4">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-note"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true"><a
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true"><a class="link-dark"
                         href="#nav-note">Notes</a></button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-note-category"
-                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><a
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><a class="link-dark"
                         href="#nav-note-category">Note Categories</a></button>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-note" role="tabpanel" aria-labelledby="nav-home-tab"
                 tabindex="0">
-                <form method="get">
+                <form method="GET">
                     <div class="input-group mb-3 mt-3">
                         <input type="text" name="query" class="form-control" placeholder="Search for Notes..."
                             aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
                     </div>
                 </form>
                 <table class="table align-middle mt-3">
@@ -116,7 +124,7 @@
                     </tbody>
                 </table>
                 <a href="{% url 'notes-form' %}"><button class="btn btn-primary">Add Note</button></a>
-                <button class=" btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNoteAllModal">Delete All Notes</button>
+                <button class=" btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteNoteAllModal">Delete All Notes</button>
                 <div class="modal fade" id="deleteNoteAllModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">

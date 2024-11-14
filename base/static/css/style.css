@@ -1,0 +1,50 @@
+.img-banner {
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.img-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-banner-content {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, .9);
+}
+.img-banner-content span {
+    color: rgba(192, 57, 43,1.0);
+    font-size: 4rem;
+}
+
+.log-img {
+    height: calc(100vh - 155px);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.log-img img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.log-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
